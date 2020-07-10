@@ -1,0 +1,53 @@
+<ion-content color = "primary"  class = "ion-padding">
+    <div id = "logo_icon">
+      <ion-icon id = "icon" class = "ion-padding" src = "/assets/LogoIcon.svg"></ion-icon>
+    </div>
+          
+    <div id = "login_container">
+      <nav id = "login_nav">
+        <p>LOGIN</p>
+      </nav>
+    </div>
+
+    <div id = "log_in_form_container">
+        <form id = "log_in_form" [formGroup] = "LogIn_Form">
+
+          <ion-item id = "first_input_item" lines = "inset" color = "none">
+            <ion-label id = "username_placeholder" style = "font-family: 'Montserrat', Arial, Helvetica, sans-serif;color: white;" color = "light" position="floating">USERNAME</ion-label>
+            <ion-input [(ngModel)] = "username" formControlName = "username"></ion-input>
+          </ion-item>
+    
+          <div id = "error" *ngIf="LogIn_Form.get('username').hasError('required') && LogIn_Form.get('username').touched">
+            <span>Please input your email</span>
+          </div>
+          <div id = "error" *ngIf="LogIn_Form.get('username').hasError('pattern') && LogIn_Form.get('username').touched">
+            <span>Email address invalid</span>
+          </div>
+      
+          
+          <ion-item id = "second_input_item" lines = "inset" color = "none">
+            <ion-label id = "password_placeholder" style = "font-family: 'Montserrat', Arial, Helvetica, sans-serif;color: white;" position="floating">PASSWORD</ion-label>
+            <ion-input type = "password" [(ngModel)] = "password" formControlName = "password"></ion-input>
+          </ion-item>
+
+          <div id="password_error" *ngIf="LogIn_Form.get('password').hasError('required') && LogIn_Form.get('password').touched">
+            <span>Please input your password</span>
+          </div>
+          <div id="password_error" *ngIf="LogIn_Form.get('password').hasError('minlength') && LogIn_Form.get('password').touched">
+            <span>Minimum 6 characters.</span>
+          </div>
+          <div id="password_error" *ngIf="LogIn_Form.get('password').hasError('maxlength') && LogIn_Form.get('password').touched">
+            <span>Maximum 16 characters.</span>
+          </div>
+        </form>
+      </div>
+
+      <div id = "button_div" style = "margin-top: 30px;">
+          <ion-icon name="arrow-forward-circle-outline" color = "medium" *ngIf = "!LogIn_Form.valid"></ion-icon>
+          <ion-icon name="arrow-forward-circle-outline" (click) = "logIn()" *ngIf = "LogIn_Form.valid"></ion-icon>
+        
+          <nav style = "text-align: center;">
+            <p>Don't have account?<span><a [routerLink] = "['/register']" style = "color:darkblue;text-decoration: none;"> Register</a></span></p>
+          </nav>
+        </div>
+</ion-content>

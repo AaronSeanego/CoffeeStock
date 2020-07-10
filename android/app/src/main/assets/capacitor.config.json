@@ -1,0 +1,16 @@
+{
+  "appId": "coffee.stock.app",
+  "appName": "CoffeeStock",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "linuxAndroidStudioPath": "/Android/Sdk/tools/android.sh",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "backgroundColor": "#8A4B38",
+      "androidSplashResourceName": "splash"
+    }
+  },
+  "cordova": {}
+}

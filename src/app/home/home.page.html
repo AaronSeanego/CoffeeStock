@@ -1,0 +1,81 @@
+<ion-header color = "primary">
+  <ion-toolbar color = "primary">
+    <ion-icon name="sync-outline" (click) = "syncData()" slot = "start" style = "width: 28px;height: 28px;margin-left: 20px;color: #D99E82;"></ion-icon>
+  
+    <ion-title style = "text-align: center;margin: auto;font-size: 15px;">
+      COFFEE FLAVOURS
+    </ion-title>
+  
+    <ion-icon name="add-circle-outline" slot = "end" [routerLink] = "['/manage-flavours']"
+      style = "width: 28px; height: 28px;margin-right: 20px;"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <div id = "flavours_container" *ngIf = "Flavours_Object != null">
+
+        <ion-list id = "flavours_list" *ngFor = "let flavours of Flavours_Object;" class = "ion-padding">
+          <ion-item id = "flavours_list_items" lines = "none" style = "border: 1px solid #CCD6DD;margin-top: 10px;" color = "none">
+            <ion-avatar slot="end" style = "width: auto;height: auto;margin-right: 10px;">
+              <!-- <ion-icon name="logo-ionic"></ion-icon> -->
+              <img src = "{{flavours?.PhotoName}}" alt = "coffeestock" style = "width: 70px;height: 70px;"/>
+              <!-- <img src = "flavours?.PhotoName" alt = "coffeestock" *ngFor = "flavours?.PhotoName != ''" style = "width: 20px;height: 20px;"/> -->
+            </ion-avatar>
+            
+            <ion-label>
+              <h2 style = "color: #8A4B38;">{{flavours?.Name}}</h2>
+              <h3>{{flavours?.Barcode}}</h3>
+
+              <ion-icon name="create-outline" (click) = "editFlavours(flavours?.Id,flavours?.Barcode,
+              flavours?.Name,flavours?.PricePerBox,
+              flavours?.PricePerPod,flavours?.PodsPerBox,flavours?.PhotoName)"
+              style = "width: 27px;height: 27px;margin-top: 10px;color: #CCD6DD;"></ion-icon>
+
+              <ion-icon name="trash-outline" (click) = "deleteFlavours(flavours?.Id,flavours?.Name)"
+              style = "width: 27px;height: 27px;margin-top: 10px;margin-left: 10px;color: #CCD6DD;"></ion-icon>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        
+      </div>
+    
+      <div id = "message_container" *ngIf = "Flavours_Object == null" style = "background: transparent;margin-top: 10px;" class = "ion-padding">
+        <p style = "text-align: center;color: #8c8c8c;">You currently don't have any coffee flavours. Please click 
+          <ion-icon name="add-circle-outline" style = "color: #8A4B38;margin: 0px;padding: 0px;"></ion-icon>
+            to add new coffee flavours.
+        </p>
+      </div>
+        
+      <!-- <div id = "notification" style = "text-align: center;font-size: 12px;margin: 10%;">
+        <p style = "color: #8c8c8c;"><b>DEV Instructions:</b>The sync icon in the header will sync all application data.
+          Click to see alert controller...
+        </p>
+      </div> -->
+        
+      <div id = "notification" style = "text-align: center;font-size: 12px;margin: 10%;">
+        <p style = "color: #8c8c8c;"><b>NEXT STEP:</b>
+          Click on the add flavour icon in the header.
+        </p>
+      </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-tabs color = "none">
+      <ion-tab-bar slot="bottom" color = "none">
+              
+        <ion-tab-button (click) = "logOut()">
+          <ion-icon name="log-out-outline" color = "primary"></ion-icon>
+          <ion-label color = "primary">Log out</ion-label>
+        </ion-tab-button>
+
+        <!-- <ion-tab-button (click) = "deleteAdmin(flavours?.Username)">
+          <ion-icon name="trash-outline" color = "primary"></ion-icon>
+          <ion-label color = "primary">Log out</ion-label>
+        </ion-tab-button> -->
+            
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,106 @@
+ion-content {
+    #back_icon-container {
+        #back_icon {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+            margin-top: 10px;
+            position: absolute;
+            outline: none;
+        }
+    }
+
+    #coffeestock_logo_container {
+        margin-top: 20px;
+        background: transparent;
+        #coffeestock_logo {
+            width: 150px;
+            height: 150px;
+            margin: auto;
+            display:block;
+        }
+    }
+
+    #register_header_container {
+        background: transparent;
+        #register_nav {
+            text-align: center;
+            p {}
+        }
+    }
+
+    #register_form_container {
+        #form {
+            #username_input_item {
+                #username_placeholder {
+                    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+                    color: white;
+                }
+            }
+
+            #username_error {
+                text-align: center;
+                position: absolute;
+                max-width: 100%;
+                min-width: 100%;
+                span {
+                    position: relative;
+                    text-align: center;
+                    // margin-left: 80px;
+                    // margin-right: 50px;
+                    // margin-top: 10px;
+                    top: 5px;
+                    align-items: center;
+                }
+            }
+
+            #password_input_item {
+                margin-top: 30px;
+                #password_placeholder {
+                    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+                    color: white;
+                }
+            }
+
+            #password_error {
+                text-align: center;
+                position: absolute;
+                max-width: 100%;
+                min-width: 100%;
+                span {
+                    position: relative;
+                    text-align: center;
+                    // margin-left: 80px;
+                    // margin-right: 50px;
+                    // margin-top: 10px;
+                    top: 5px;
+                    align-items: center;
+                }
+            }
+
+            #confirm_password_input_item {
+                margin-top: 30px;
+                #confirm_password_placeholder {
+                    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+                    color: white;
+                }
+            }
+
+            #confirm_password_error {
+                text-align: center;
+                position: absolute;
+                max-width: 100%;
+                min-width: 100%;
+                span {
+                    position: relative;
+                    text-align: center;
+                    // margin-left: 80px;
+                    // margin-right: 50px;
+                    // margin-top: 10px;
+                    top: 5px;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}

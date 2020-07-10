@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-icon name="arrow-back-circle-outline" [routerLink] = "['/home']" slot = "start" 
+     style = "width: 28px;height: 28px;margin-left: 20px;color: #D99E82;outline: none;"></ion-icon>
+
+    <ion-title style = "text-align: center;font-size: 15px;">MANAGE FLAVOURS</ion-title>
+
+    <ion-icon name="barcode-outline" (click) = "scanBarcode()" slot = "end" style = "width: 28px; height: 28px;margin-right: 20px;"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div id = "form_container">
+        <form [formGroup] = "manage_flavours_form">
+      
+        <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-item lines = "inset">
+                    <ion-label position="floating" style = "font-size: 12px;margin-top: 10px;">BARCODE</ion-label>
+                    <ion-input [(ngModel)] = "Barcode" formControlName ="barcode"></ion-input>
+                  </ion-item>
+                </ion-col>
+                      
+                <ion-col size = "3" style = "text-align: center;">
+                  <ion-icon name="camera-outline"(click) = "selectImage()" style = "margin-top: 9%;width: 30px;height: 30px;
+                  color: #8c8c8c;background-color: #ececec;
+                  padding: 10px;border: 1px solid #d4d4d4;" *ngIf = "photo_url == ''"></ion-icon>
+  
+                  <img [src] ="cameraIcon" clickable (click)="selectImage()" *ngIf = "photo_url != ''" style = "margin-top: 7%;
+                  width: 55px;height: 55px;background-color: #ececec;border: 1px solid #d4d4d4;">
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                    <ion-item lines = "inset">
+                      <ion-label position="floating" style = "font-size: 12px;margin-top: 10px;">FLAVOUR NAME</ion-label>
+                      <ion-input [(ngModel)] = "flavourName" formControlName ="flavour_name"></ion-input>
+                    </ion-item>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-item lines = "inset">
+                    <ion-label position="floating" style = "font-size: 12px;margin-top: 10px;">PRICE PER BOX</ion-label>
+                    <ion-input [(ngModel)] = "pricePerBox" inputmode="numeric" formControlName ="price_per_box"></ion-input>
+                  </ion-item>
+                </ion-col>
+                        
+                <ion-col>
+                  <ion-item lines = "inset">
+                    <ion-label position="floating" style = "font-size: 12px;margin-top: 10px;">PRICE PER POD</ion-label>
+                    <ion-input [(ngModel)] = "pricePerPod" inputmode="numeric" formControlName ="price_per_pod"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-item lines = "inset">
+                    <ion-label position="floating" style = "font-size: 12px;margin-top: 10px;">PODS PER BOX</ion-label>
+                    <ion-input [(ngModel)] = "podsPerBox" inputmode="numeric" formControlName ="pods_per_box"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+        </ion-grid>
+      </form>
+    </div>
+      
+    <div id = "notification" style = "text-align: center;font-size: 12px;margin: 10%;">
+      <p style = "color: #8c8c8c;"><b>DEV Instructions:</b>Click on the scan barcode icon in the header...</p>
+    </div>
+</ion-content>
+
+<ion-footer style = "height: 30%;" class="ion-no-border">
+
+    <ion-toolbar color = "primary" style = "height: 100%;">
+      <ion-buttons style = "margin-top: 10%;">
+        <ion-icon name="add-circle-outline" color = "medium" *ngIf = "!manage_flavours_form.valid" 
+        style = "width: 100px;height: 100px;margin: auto;display:block;;"></ion-icon>
+  
+        <ion-icon name="add-circle-outline" (click) = "addFlavours()" *ngIf = "manage_flavours_form.valid" 
+        style = "width: 100px;height: 100px;margin: auto;display:block;"></ion-icon>
+      </ion-buttons>
+      
+    </ion-toolbar>
+  
+  </ion-footer>

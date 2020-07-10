@@ -1,0 +1,71 @@
+<ion-content color = "primary">
+
+    <div id = "back_icon-container">
+      <ion-icon id = "back_icon" name="arrow-back-circle-outline" slot = "start" [routerLink] = "['/login']"></ion-icon>
+    </div>
+        
+    <div id = "coffeestock_logo_container">
+      <ion-icon id = "coffeestock_logo" class = "ion-padding" src = "/assets/LogoIcon.svg"></ion-icon>
+    </div>
+        
+    <div id = "register_header_container">
+      <nav id = "register_nav">
+        <p>REGISTER</p>
+      </nav>
+    </div>
+
+    <div id = "register_form_container">
+        <form id = "form" [formGroup] = "register_form" class = "ion-padding">
+          <ion-item id = "username_input_item" lines = "inset" color = "none">
+            <ion-label id = "username_placeholder" style = "font-family: 'Montserrat', Arial, Helvetica, sans-serif;color: white;" color = "light" position="floating">EMAIL/USERNAME</ion-label>
+            <ion-input [(ngModel)] = "username" formControlName = "username"></ion-input>
+          </ion-item>
+
+          <div id="username_error" *ngIf="register_form.get('username').hasError('required') && register_form.get('username').touched">
+            <span>Please input your email</span>
+          </div>
+          <div id="username_error" style = "text-align: center;position: absolute;" *ngIf="register_form.get('username').hasError('pattern') && register_form.get('username').touched">
+            <span style = "display: block;text-align: center;margin-left: 80px;margin-right: 50px;margin-top: 8px;">Email address invalid</span>
+          </div>
+      
+          <ion-item id = "password_input_item" lines = "inset" color = "none">
+            <ion-label id = "password_placeholder" style = "font-family: 'Montserrat', Arial, Helvetica, sans-serif;color: white;" color = "light" position="floating">PASSWORD</ion-label>
+            <ion-input type = "password" [(ngModel)] = "password" formControlName = "password"></ion-input>
+          </ion-item>
+
+          <div id="password_error" *ngIf="register_form.get('password').hasError('required') && register_form.get('password').touched">
+            <span>Please input your password</span>
+          </div>
+          <div id="password_error" *ngIf="register_form.get('password').hasError('minlength') && register_form.get('password').touched">
+            <span>Minimum 6 characters.</span>
+          </div>
+          <div id="password_error" *ngIf="register_form.get('password').hasError('maxlength') && register_form.get('password').touched">
+            <span>Maximum 16 characters.</span>
+          </div>
+      
+          <ion-item id = "confirm_password_input_item" lines = "inset" color = "none">
+            <ion-label id = "confirm_password_placeholder" style = "font-family: 'Montserrat', Arial, Helvetica, sans-serif;color: white;" color = "light" position="floating">CONFIRM PASSWORD</ion-label>
+            <ion-input type = "password" [(ngModel)] = "confirm_password" formControlName = "confirm_password"></ion-input>
+          </ion-item>
+
+          <div id="confirm_password_error" *ngIf="register_form.get('confirm_password').hasError('required') && register_form.get('confirm_password').touched">
+            <span>Please input your password</span>
+          </div>
+          <!-- <div class="error" style = "text-align: center;position: absolute;" *ngIf="LogIn_Form.get('password').hasError('minlength') && LogIn_Form.get('password').touched">
+            <span style = "display: block;text-align: center;margin-left: 80px;margin-right: 50px;margin-top: 8px;">Minimum 6 characters.</span>
+          </div>
+          <div class="error" style = "text-align: center;position: absolute;" *ngIf="LogIn_Form.get('password').hasError('maxlength') && LogIn_Form.get('password').touched">
+            <span style = "display: block;text-align: center;margin-left: 80px;margin-right: 50px;margin-top: 8px;">Maximum 16 characters.</span>
+          </div> -->
+        </form>
+    </div>
+
+    <div style = "margin-top: 10px;">
+
+        <ion-icon name="arrow-forward-circle-outline" color = "medium" *ngIf = "!register_form.valid"
+          style = "width: 100px;height: 100px;margin: auto;display:block;"></ion-icon>
+  
+        <ion-icon name="arrow-forward-circle-outline" color = "light" *ngIf = "register_form.valid" (click) = "createAdminTable()"
+          style = "width: 100px;height: 100px;margin: auto;display:block;"></ion-icon>
+    </div>
+</ion-content>
